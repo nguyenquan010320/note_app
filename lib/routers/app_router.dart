@@ -15,7 +15,6 @@ final GoRouter appRouter = GoRouter(
       return '/login';
     }
 
-    // đã login mà vào login → về home
     if (isLoggedIn && state.uri.toString() == '/login') {
       return '/home';
     }
