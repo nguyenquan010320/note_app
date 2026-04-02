@@ -14,7 +14,6 @@ class NoteService {
 
   List<Note> getNotes() => _notes;
 
-  // load từ local
   Future<void> loadNotes() async {
     final prefs = await SharedPreferences.getInstance();
     final data = prefs.getString(keyNotes);
@@ -24,19 +23,16 @@ class NoteService {
     }
   }
 
-  // lưu
   Future<void> saveNotes() async {
     final prefs = await SharedPreferences.getInstance();
     await prefs.setString(keyNotes, Note.encode(_notes));
   }
 
-  // add
   Future<void> addNote(Note note) async {
     _notes.add(note);
     await saveNotes();
   }
 
-  // delete
   Future<void> deleteNote(int index) async {
     _notes.removeAt(index);
     await saveNotes();
