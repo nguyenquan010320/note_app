@@ -1,0 +1,25 @@
+import 'dart:convert';
+
+import 'package:json_annotation/json_annotation.dart';
+
+part 'post.g.dart';
+
+@JsonSerializable()
+class Post {
+  int userId;
+  int id;
+  String title;
+  String body;
+
+  Post({
+    required this.userId,
+    required this.id,
+    required this.title,
+    required this.body,
+  });
+
+  factory Post.fromJson(Map<String, dynamic> json) => _$PostFromJson(json);
+
+  /// Connect the generated [_$PostToJson] function to the `toJson` method.
+  Map<String, dynamic> toJson() => _$PostToJson(this);
+}
